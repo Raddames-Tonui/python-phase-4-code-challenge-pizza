@@ -62,8 +62,8 @@ def create_restaurant_pizza():
     pizza_id = data['pizza_id']
     restaurant_id = data['restaurant_id']
     
-    if not isinstance(price, (int, float)) or price < 0:
-        return jsonify({"errors": ["Price must be a non-negative number"]}), 400
+    if not isinstance(price, (int, float)) or price < 1 or price > 30:
+        return jsonify({"errors": ["Price must be between 1 and 30"]}), 400
     
     pizza = Pizza.query.get(pizza_id)
     restaurant = Restaurant.query.get(restaurant_id)
